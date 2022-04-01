@@ -1,13 +1,12 @@
 using Xunit;
-using Xunit.Abstractions;
 
 namespace IoC.Test.UnitTest;
 
 public class IoCTest
 {
-    private readonly InstancePool _sut; //SUT stands for System Under Test.
+    private readonly IInstancePool _sut; //SUT stands for System Under Test.
 
-    public IoCTest(ITestOutputHelper output)
+    public IoCTest()
     {
         _sut = InstancePool.Instance;
     }
@@ -16,10 +15,10 @@ public class IoCTest
     public void ShouldGetARegisteredInstance()
     {
         //Given
-        _sut.Register<TestClass>();
+        _sut.Register(new object());
 
         //When
-        var tc = _sut.GetInstance<TestClass>();
+        var tc = _sut.GetInstance<object>();
 
         //Then
         Assert.NotNull(tc);
@@ -32,11 +31,10 @@ public class IoCTest
         //Given
 
         //When
-        var instance1 = _sut.GetInstance<TestClass>();
-        var instance2 = _sut.GetInstance<TestClass>();
+        var instance1 = _sut.GetInstance<object>();
+        var instance2 = _sut.GetInstance<object>();
 
         //Then
-        Assert.Equal(instance1.GUID, instance2.GUID);
+        Assert.True(instance1.Equals(instance2));
     }
-
 }
