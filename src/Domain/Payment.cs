@@ -1,6 +1,6 @@
 namespace Domain;
 
-public record Payment(long ID, long OrderID, double TotalPaid, PaymentMethod ViaOfPayment);
+public record Payment(long ID, Order ProcessedOrder, double TotalPaid, PaymentMethod ViaOfPayment);
 
 //Provide the supported payment methods.
 public enum PaymentMethod
