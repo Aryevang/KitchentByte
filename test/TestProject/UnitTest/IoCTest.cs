@@ -1,6 +1,7 @@
+using IoC;
 using Xunit;
 
-namespace IoC.Test.UnitTest;
+namespace TestProject.UnitTest;
 
 public class IoCTest
 {
@@ -8,7 +9,7 @@ public class IoCTest
 
     public IoCTest()
     {
-        _sut = InstancePool.Instance;
+        _sut = InstancePool.Instance();
     }
 
     [Fact]
@@ -26,7 +27,7 @@ public class IoCTest
 
 
     [Fact]
-    public void ShouldReturnTheSameGUID()
+    public void ShouldReturnTheSameInstance()
     {
         //Given
 
