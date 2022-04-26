@@ -13,12 +13,12 @@ public sealed class InstancePool : IInstancePool
 
     //This is the only way to access to the methods of the class.
     private static IInstancePool? _instance = null;
-    public static IInstancePool Instance
+    public static IInstancePool Instance()
     {
-        get
-        {
-            return _instance is null ? new InstancePool() : _instance;
-        }
+        if (_instance is null)
+            _instance = new InstancePool();
+
+        return _instance;
     }
 
     //This method register the class.

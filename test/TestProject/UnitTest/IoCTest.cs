@@ -8,7 +8,7 @@ public class IoCTest
 
     public IoCTest()
     {
-        _sut = InstancePool.Instance;
+        _sut = InstancePool.Instance();
     }
 
     [Fact]
