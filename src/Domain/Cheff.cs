@@ -14,6 +14,7 @@ public record Cheff
         set => _orderCapacity = (value > 5 ? 5 : value); //The Max capacity for Cheff are 5 orders.
                                                          //`NOTE`: This validation could be removed or changed in the near future.
     }
+    public char Status { get; init; }
 }
 
 //Provides a clear limit of difficulty a Cheff for a Dish.
