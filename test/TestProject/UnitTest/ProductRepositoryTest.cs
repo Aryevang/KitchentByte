@@ -19,7 +19,7 @@ public class ProductRepositoryTest
     public void ShouldAddAProduct()
     {
         //Given
-        Product product = new Product(1, "Test");
+        Product product = new Product(1, "Test",'A');
 
         //When
          _sut.Add(product);
@@ -33,8 +33,8 @@ public class ProductRepositoryTest
     {
         //Given
         var products = new List<Product>(){
-            new Product(1,"Test2"),
-            new Product(2,"Test3"),
+            new Product(1,"Test2", 'A'),
+            new Product(2,"Test3", 'A'),
         };
 
         //When
@@ -49,8 +49,8 @@ public class ProductRepositoryTest
     {
         //Given
         var products = new List<Product>(){
-            new Product(1,"Test2"),
-            new Product(2,"Test3"),
+            new Product(1,"Test2", 'A'),
+            new Product(2,"Test3", 'A'),
         };
          _sut.AddMany(products);
 
@@ -67,8 +67,8 @@ public class ProductRepositoryTest
     {
         //Given
         var products = new List<Product>(){
-            new Product(1,"Test2"),
-            new Product(2,"Test3"),
+            new Product(1,"Test2", 'A'),
+            new Product(2,"Test3", 'A'),
         };
          _sut.AddMany(products);
 
@@ -88,8 +88,8 @@ public class ProductRepositoryTest
     {
         //Given
         var products = new List<Product>(){
-            new Product(1,"Test2"),
-            new Product(2,"Test3"),
+            new Product(1,"Test2", 'A'),
+            new Product(2,"Test3", 'A'),
         };
          _sut.AddMany(products);
 
@@ -105,7 +105,7 @@ public class ProductRepositoryTest
     public void ShouldUpdateTheProduct()
     {
         //Given
-        Product product = new Product(1, "Test");
+        Product product = new Product(1, "Test", 'A');
          _sut.Add(product);
         Product newProduct = product with {Name ="Updated"};
 
