@@ -19,10 +19,10 @@ public class ProductRepositoryTest
     public void ShouldAddAProduct()
     {
         //Given
-        Product product = new Product(1, "Test",'A');
+        Product product = new Product { ID = 1, Name = "Test", Status = 'A' };
 
         //When
-         _sut.Add(product);
+        _sut.Add(product);
 
         //Then
         Assert.Equal(1, _sut.Count());
@@ -33,12 +33,12 @@ public class ProductRepositoryTest
     {
         //Given
         var products = new List<Product>(){
-            new Product(1,"Test2", 'A'),
-            new Product(2,"Test3", 'A'),
+            new Product { ID = 1, Name = "Test2", Status = 'A' },
+            new Product { ID = 2, Name = "Test3", Status = 'A' }
         };
 
         //When
-         _sut.AddMany(products);
+        _sut.AddMany(products);
 
         //Then
         Assert.Equal(2, _sut.Count());
@@ -49,13 +49,13 @@ public class ProductRepositoryTest
     {
         //Given
         var products = new List<Product>(){
-            new Product(1,"Test2", 'A'),
-            new Product(2,"Test3", 'A'),
+            new Product { ID = 1, Name = "Test2", Status = 'A' },
+            new Product { ID = 2, Name = "Test3", Status = 'A' }
         };
-         _sut.AddMany(products);
+        _sut.AddMany(products);
 
         //When
-        var product =  _sut.GetByID(2);
+        var product = _sut.GetByID(2);
 
         //Then
         Assert.Equal("Test3", product?.Name);
@@ -67,15 +67,15 @@ public class ProductRepositoryTest
     {
         //Given
         var products = new List<Product>(){
-            new Product(1,"Test2", 'A'),
-            new Product(2,"Test3", 'A'),
+            new Product { ID = 1, Name = "Test2", Status = 'A' },
+            new Product { ID = 2, Name = "Test3", Status = 'A' }
         };
-         _sut.AddMany(products);
+        _sut.AddMany(products);
 
         //When
-         _sut.Delete(1);
-        var remainingProduct =  _sut.GetByID(2);
-        var productNotFound =  _sut.GetByID(1);
+        _sut.Delete(1);
+        var remainingProduct = _sut.GetByID(2);
+        var productNotFound = _sut.GetByID(1);
 
         //Then
         Assert.Equal(1, _sut.Count());
@@ -88,13 +88,13 @@ public class ProductRepositoryTest
     {
         //Given
         var products = new List<Product>(){
-            new Product(1,"Test2", 'A'),
-            new Product(2,"Test3", 'A'),
+            new Product { ID = 1, Name = "Test2", Status = 'A' },
+            new Product { ID = 2, Name = "Test3", Status = 'A' }
         };
-         _sut.AddMany(products);
+        _sut.AddMany(products);
 
         //When
-        List<Product> retrievedproducts =  _sut.GetAll();
+        List<Product> retrievedproducts = _sut.GetAll();
 
         //Then
         Assert.NotNull(retrievedproducts);
@@ -105,15 +105,15 @@ public class ProductRepositoryTest
     public void ShouldUpdateTheProduct()
     {
         //Given
-        Product product = new Product(1, "Test", 'A');
-         _sut.Add(product);
-        Product newProduct = product with {Name ="Updated"};
+        Product product = new Product { ID = 1, Name = "Test", Status = 'A' };
+        _sut.Add(product);
+        Product newProduct = product with { Name = "Updated" };
 
         //When
-         _sut.Update(newProduct);
+        _sut.Update(newProduct);
 
         //Then
-        Product? updatedProduct =  _sut.GetByID(1);
+        Product? updatedProduct = _sut.GetByID(1);
         Assert.Equal("Updated", updatedProduct?.Name);
     }
 }

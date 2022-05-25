@@ -1,4 +1,12 @@
 ﻿namespace Domain;
 
 //This model will handle the information about prodcut stock.
-public record Inventory(long ID, IEnumerable<InventoryItem> items, DateOnly CompletionDate, int ToTalUnits, double TotalInventoryPrice, char Status);
+public record Inventory
+{
+    public long ID { get; set; }
+    public IEnumerable<InventoryItem>? items { get; set; }
+    public DateOnly CompletionDate { get; set; }
+    public int ToTalUnits { get; set; }
+    public double TotalInventoryPrice { get; set; }
+    public char Status { get; set; }
+}

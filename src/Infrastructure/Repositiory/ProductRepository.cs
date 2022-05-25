@@ -23,40 +23,36 @@ public class ProductRepository : IProductRepository
 
     public void Delete(long id)
     {
-        Product? productToDelete = _productCollection.Where(p => p.ID == id).SingleOrDefault();
+        Product? productToDelete = GetByID(id);
         if (productToDelete is not null)
-            _productCollection.Remove(productToDelete);
+            Update(productToDelete with {Status = 'D'});
     }
 
     public List<Product> GetAll()
     {
-        return _productCollection;
+        return _productCollection.Where(p => p.Status =='A').ToList();
 
     }
 
     public Product? GetByID(long id)
     {
-        return _productCollection?.Where(p => p.ID == id).SingleOrDefault();
+        return _productCollection?.Where(p => p.ID == id && p.Status == 'A').SingleOrDefault();
     }
 
     public void Update(Product model)
     {
-
-        Product? productToUpdate = _productCollection.Where(p => p.ID == model.ID).SingleOrDefault();
+        Product? productToUpdate = GetByID(model.ID);
 
         if (productToUpdate is not null)
         {
-            _productCollection.Remove(productToUpdate);
-            _productCollection.Add(productToUpdate with
-            {
-                Name = model.Name
-            });
+            productToUpdate.Name = model.Name;
+            productToUpdate.Status = model.Status;
         }
     }
 
     public int Count()
     {
-        return _productCollection.Count();
+        return GetAll().Count();
     } 
 
 }
