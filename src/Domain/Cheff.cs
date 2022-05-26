@@ -5,8 +5,8 @@ namespace Domain;
 //The `level` will filter witch cheff is able to prepare a Dish based on the difficulty of it.
 public record Cheff
 {
-    public long ID { get; init; }
-    public Experience Level { get; init; }
+    public long ID { get; set; }
+    public Experience Level { get; set; }
     private int _orderCapacity;
     public int OrderCapacity
     {
@@ -14,7 +14,7 @@ public record Cheff
         set => _orderCapacity = (value > 5 ? 5 : value); //The Max capacity for Cheff are 5 orders.
                                                          //`NOTE`: This validation could be removed or changed in the near future.
     }
-    public char Status { get; init; }
+    public char Status { get; set; }
 }
 
 //Provides a clear limit of difficulty a Cheff for a Dish.
