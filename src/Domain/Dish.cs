@@ -5,7 +5,7 @@ public record Dish
 {
     public long ID { get; set; }
     public string? Name { get; set; }
-    public IEnumerable<Product>? Ingredients { get; set; }
+    public List<Product>? Ingredients { get; set; }
     public double Price { get; set; }
     public TimeSpan AverageCompletionTime { get; set; }
     public int Difficulty { get; set; }

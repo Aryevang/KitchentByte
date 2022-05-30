@@ -4,7 +4,7 @@
 public record Inventory
 {
     public long ID { get; set; }
-    public IEnumerable<InventoryItem>? items { get; set; }
+    public List<InventoryItem>? items { get; set; }
     public DateOnly CompletionDate { get; set; }
     public int ToTalUnits { get; set; }
     public double TotalInventoryPrice { get; set; }

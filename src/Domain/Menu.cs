@@ -6,6 +6,6 @@ public record Menu
 {
     public long ID { get; set; }
     public string? Name { get; set; }
-    public IEnumerable<Dish>? Dishes { get; set; }
+    public List<Dish>? Dishes { get; set; }
     public char Status { get; set; }
 }
