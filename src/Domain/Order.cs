@@ -4,7 +4,7 @@ namespace Domain;
 public record Order
 {
     public long ID { get; set; }
-    public IEnumerable<Dish>? Dishes { get; set; }
+    public List<Dish>? Dishes { get; set; }
     public double SubTotal { get; set; }
     public double Tax { get; set; }
     public char Status { get; set; }
