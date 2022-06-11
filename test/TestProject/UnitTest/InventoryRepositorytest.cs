@@ -20,7 +20,7 @@ public class InventoryRepositoryInventory
     public void ShouldAddOneInventory()
     {
         //Given
-        Inventory? inventory = InventoryFixture.BuildInventory();
+        Inventory inventory = InventoryFixture.BuildInventory();
 
         //When
         _sut.Add(inventory);
