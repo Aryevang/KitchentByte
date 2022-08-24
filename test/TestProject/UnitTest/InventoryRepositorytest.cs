@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Domain;
 using Infrastructure.Repositories;
-using InventoryProject.UnitTest.Fixtures;
+using TestProject.UnitTest.Fixtures;
 using Xunit;
 
 namespace InventoryProject.UnitTest;

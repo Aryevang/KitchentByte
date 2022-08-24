@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Domain;
 using Infrastructure.Repositories;
-using InventoryProject.UnitTest.Fixtures;
+using TestProject.UnitTest.Fixtures;
 using Xunit;
 
 namespace DishProject.UnitTest;

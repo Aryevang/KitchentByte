@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Domain;
 
-namespace InventoryProject.UnitTest.Fixtures;
+namespace TestProject.UnitTest.Fixtures;
 
 public static class CheffFixture
 {

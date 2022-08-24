@@ -2,7 +2,7 @@ using Domain;
 using System;
 using System.Collections.Generic;
 
-namespace InventoryProject.UnitTest.Fixtures;
+namespace TestProject.UnitTest.Fixtures;
 
 public static class InventoryFixture
 {
