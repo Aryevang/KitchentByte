@@ -19,7 +19,7 @@ public class MenuRepositoryTest
     public void AddedMenu_gets_Upsate()
     {
         //Given
-        var menu = MenuFixture.BuildMenu();
+        var menu = MenuFixture.Build();
 
         //When
         _sut.Add(menu);
@@ -32,7 +32,7 @@ public class MenuRepositoryTest
     public void ShouldAddAMenu()
     {
         //Given
-        Menu menu = MenuFixture.BuildMenu();
+        Menu menu = MenuFixture.Build();
 
         //When
         _sut.Add(menu);
@@ -45,7 +45,7 @@ public class MenuRepositoryTest
     public void ShouldGetOneMenuById()
     {
         //Given
-        var menus = MenuFixture.BuildMenu(3);
+        var menus = MenuFixture.Build(3);
         menus.ForEach(menu =>
         {
             _sut.Add(menu);
@@ -55,7 +55,7 @@ public class MenuRepositoryTest
         var menu = _sut.GetByID(2);
 
         //Then
-        Assert.Equal("menu1", menu?.Name);
+        Assert.Equal("menu2", menu?.Name);
     }
 
 
@@ -63,7 +63,7 @@ public class MenuRepositoryTest
     public void ShouldDeleteOneMenu()
     {
         //Given
-        var menus = MenuFixture.BuildMenu(3);
+        var menus = MenuFixture.Build(3);
         menus.ForEach(menu =>
         {
             _sut.Add(menu);
@@ -76,7 +76,7 @@ public class MenuRepositoryTest
 
         //Then
         Assert.Equal(2, _sut.GetAll().Count);
-        Assert.Equal("menu1", remainingMenu?.Name);
+        Assert.Equal("menu2", remainingMenu?.Name);
         Assert.Null(menuNotFound);
     }
 
@@ -84,7 +84,7 @@ public class MenuRepositoryTest
     public void ShouldReturnSeveralMenus()
     {
         //Given
-        var menus = MenuFixture.BuildMenu(5);
+        var menus = MenuFixture.Build(5);
         menus.ForEach(menu =>
         {
             _sut.Add(menu);
@@ -103,7 +103,7 @@ public class MenuRepositoryTest
     public void ShouldUpdateTheMenu()
     {
         //Given
-        Menu menu = MenuFixture.BuildMenu();
+        Menu menu = MenuFixture.Build();
         _sut.Add(menu);
         long id = _sut.GetAll().Count;
         Menu newMenu = menu with { ID = id, Name = "UpdatedMenu" };

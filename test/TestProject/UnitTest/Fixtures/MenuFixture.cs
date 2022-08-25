@@ -5,25 +5,28 @@ namespace TestProject.UnitTest.Fixtures;
 
 public static class MenuFixture
 {
-    public static List<Menu> BuildMenu(int times)
+    public static List<Menu> Build(int times)
     {
         List<Menu> _menuColletion = new();
-        for (int i = 0; i < times; i++)
-        {
-            _menuColletion.Add( new Menu {ID = i, Name = $"menu{i}", Dishes = new List<Dish>(), Status = 'A'}) ;
-        }
+        for (int i = 1; i <= times; i++)
+            _menuColletion.Add(Build(new Menu { ID = i, Name = $"menu{i}", Dishes = new List<Dish>(), Status = 'A' }));
 
         return _menuColletion;
     }
 
-    public static Menu BuildMenu()
+    public static Menu Build()
+    {
+        return Build(null);
+    }
+
+    public static Menu Build(Menu? menu)
     {
         return new Menu
         {
-            ID = 0, //The Add method contains the logic to add a new ID to any new menu item.
-            Name = "menu",
+            ID = menu?.ID ?? 1,
+            Name = menu?.Name ?? "menu",
             Dishes = new List<Dish>(),
-            Status = 'A'
+            Status = menu?.Status ?? 'A'
         };
     }
 }
