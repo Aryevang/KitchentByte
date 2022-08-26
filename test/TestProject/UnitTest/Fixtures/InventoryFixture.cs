@@ -6,23 +6,31 @@ namespace TestProject.UnitTest.Fixtures;
 
 public static class InventoryFixture
 {
-    public static List<Inventory> BuildInventory(int times)
+    public static List<Inventory> Build(int times)
     {
-        var inventories = new List<Inventory>();
-
-        for (int i = 0; i < times; i++)
-        {
-
-            var invItem = new InventoryItem { ID = 1, product = new Product { ID = 1, Name = "Product", Status = 'A' }, ItemCount = 0, Price = 0, Status = 'A' };
-            inventories.Add(new Inventory {ID= i, items= new List<InventoryItem>{ invItem }, CompletionDate = new DateOnly(2022, 5, 1), ToTalUnits = 1, TotalInventoryPrice = 500.00, Status = 'A'});
-        }
-
-        return inventories;
+        List<Inventory> _inventoryCollection = new();
+        for (int i = 1; i <= times; i++)
+            _inventoryCollection.Add(Build(new Inventory { ID = i, items = new List<InventoryItem>(), CompletionDate = new DateOnly(2022, 5, 1), ToTalUnits = 1, TotalInventoryPrice = 500.00, Status = 'A' }));
+        return _inventoryCollection;
     }
 
-    public static Inventory BuildInventory()
+    public static Inventory Build()
     {
-        var invItem = new InventoryItem { ID = 1, product = new Product { ID = 1, Name = "Product", Status = 'A' }, ItemCount = 0, Price = 0, Status = 'A' };
-        return new Inventory {ID= 1, items= new List<InventoryItem>{ invItem }, CompletionDate = new DateOnly(2022, 5, 1), ToTalUnits = 1, TotalInventoryPrice = 500.00, Status = 'A'};
+        return Build(null);
+    }
+
+    public static Inventory Build(Inventory? inv)
+    {
+        long id = inv?.ID ?? 1;
+        var invItem = new InventoryItem { ID = id, product = new Product { ID = id, Name = $"Product{id}", Status = 'A' }, ItemCount = 0, Price = 0, Status = 'A' };
+        return new Inventory
+        {
+            ID = inv?.ID ?? 1,
+            items = inv?.items ?? new List<InventoryItem>() { invItem },
+            CompletionDate = inv?.CompletionDate ?? new DateOnly(2022, 8, 1),
+            ToTalUnits = inv?.ToTalUnits ?? 1,
+            TotalInventoryPrice = inv?.TotalInventoryPrice ?? 500.00,
+            Status = inv?.Status ?? 'A'
+        };
     }
 }

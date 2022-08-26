@@ -20,7 +20,7 @@ public class InventoryRepositoryInventory
     public void ShouldAddOneInventory()
     {
         //Given
-        Inventory? inventory = InventoryFixture.BuildInventory();
+        Inventory? inventory = InventoryFixture.Build();
 
         //When
         _sut.Add(inventory);
@@ -34,7 +34,7 @@ public class InventoryRepositoryInventory
     public void ShouldAddOneInventoryItem()
     {
         //Given
-        Inventory? inventory = InventoryFixture.BuildInventory();
+        Inventory? inventory = InventoryFixture.Build();
         InventoryItem newItem = new InventoryItem { ID = 0, product = new Product { ID = 1, Name = "test", Status = 'A' }, ItemCount = 200, Price = 0, Status = 'A' };
 
         //When
@@ -50,7 +50,7 @@ public class InventoryRepositoryInventory
     public void ShouldAddTwoInventoryItem()
     {
         //Given
-        Inventory? inventory = InventoryFixture.BuildInventory();
+        Inventory? inventory = InventoryFixture.Build();
         InventoryItem firstItem = new InventoryItem { ID = 0, product = new Product { ID = 1, Name = "test", Status = 'A' }, ItemCount = 100, Price = 0, Status = 'A' };
         InventoryItem secondItem = new InventoryItem { ID = 0, product = new Product { ID = 2, Name = "test2", Status = 'A' }, ItemCount = 200, Price = 0, Status = 'A' };
 
@@ -68,7 +68,7 @@ public class InventoryRepositoryInventory
     public void ShouldDeleteOneInventoryItem()
     {
         //Given
-        Inventory? inventory = InventoryFixture.BuildInventory();
+        Inventory? inventory = InventoryFixture.Build();
         InventoryItem firstItem = new InventoryItem { ID = 0, product = new Product { ID = 1, Name = "test", Status = 'A' }, ItemCount = 100, Price = 0, Status = 'A' };
         InventoryItem secondItem = new InventoryItem { ID = 0, product = new Product { ID = 2, Name = "test2", Status = 'A' }, ItemCount = 200, Price = 0, Status = 'A' };
 
@@ -91,7 +91,7 @@ public class InventoryRepositoryInventory
     public void ShouldDeleteOneInventory()
     {
         //Given
-        List<Inventory> inventories = InventoryFixture.BuildInventory(3);
+        List<Inventory> inventories = InventoryFixture.Build(3);
 
         inventories.ForEach(inv =>
         {
@@ -113,7 +113,7 @@ public class InventoryRepositoryInventory
     public void ShouldUpdateTheInventory()
     {
         //Given
-        Inventory? inventory = InventoryFixture.BuildInventory();
+        Inventory? inventory = InventoryFixture.Build();
         Assert.NotNull(inventory);
         Assert.Equal(1, inventory.ID);
 
@@ -134,7 +134,7 @@ public class InventoryRepositoryInventory
     public void ShouldUpdateOneInventoryItem()
     {
         //Given
-        Inventory? inventory = InventoryFixture.BuildInventory();
+        Inventory? inventory = InventoryFixture.Build();
 
         //When
         _sut.Add(inventory);
