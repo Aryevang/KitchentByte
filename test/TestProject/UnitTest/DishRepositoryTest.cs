@@ -18,7 +18,7 @@ public class DishRepositoryTest
     public void ShouldAddOneDish()
     {
         //Given
-        Dish? dish = DishFixture.BuildDish();
+        Dish? dish = DishFixture.Build();
 
         //When
         _sut.Add(dish);
@@ -32,7 +32,7 @@ public class DishRepositoryTest
     public void ShouldDeleteOneDish()
     {
         //Given
-        List<Dish> dishes = DishFixture.BuildDish(3);
+        List<Dish> dishes = DishFixture.Build(3);
         dishes.ForEach(inv =>
         {
             _sut.Add(inv);
@@ -53,7 +53,7 @@ public class DishRepositoryTest
     public void ShouldUpdateTheDishName()
     {
         //Given
-        Dish? dish = DishFixture.BuildDish();
+        Dish? dish = DishFixture.Build();
         _sut.Add(dish);
 
         //When
