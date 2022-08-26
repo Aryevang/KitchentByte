@@ -7,11 +7,11 @@ using Xunit;
 
 namespace InventoryProject.UnitTest;
 
-public class InventoryRepositoryInventory
+public class InventoryRepositoryTest
 {
     private readonly InventoryRepository _sut;
 
-    public InventoryRepositoryInventory()
+    public InventoryRepositoryTest()
     {
         _sut = new InventoryRepository();
     }
