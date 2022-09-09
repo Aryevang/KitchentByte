@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Domain;
 using Infrastructure.Repositories;
-using InventoryProject.UnitTest.Fixtures;
+using TestProject.UnitTest.Fixtures;
 using Xunit;
 
 namespace TestProject.UnitTest;
@@ -20,7 +20,7 @@ public class CheffRepositoryTest
     public void ShouldAddACheff()
     {
         //Given
-        Cheff cheff = CheffFixture.BuildCheff(); 
+        Cheff cheff = CheffFixture.Build(); 
 
         //When
         _sut.Add(cheff);
@@ -34,7 +34,7 @@ public class CheffRepositoryTest
     public void ShouldGetOneCheffById()
     {
         //Given
-        var cheffs = CheffFixture.BuildCheff(3);
+        var cheffs = CheffFixture.Build(3);
         cheffs.ForEach(c =>
         {
             _sut.Add(c);
@@ -53,7 +53,7 @@ public class CheffRepositoryTest
     public void ShouldDeleteOneCheff()
     {
         //Given
-        var cheffs = CheffFixture.BuildCheff(3);
+        var cheffs = CheffFixture.Build(3);
         cheffs.ForEach(c =>
         {
             _sut.Add(c);
@@ -74,7 +74,7 @@ public class CheffRepositoryTest
     public void ShouldReturnSeveralCheffs()
     {
         //Given
-        var cheffs = CheffFixture.BuildCheff(3);
+        var cheffs = CheffFixture.Build(3);
         cheffs.ForEach(c =>
         {
             _sut.Add(c);
@@ -92,7 +92,7 @@ public class CheffRepositoryTest
     public void ShouldUpdateTheCheff()
     {
         //Given
-        Cheff cheff  = CheffFixture.BuildCheff();
+        Cheff cheff  = CheffFixture.Build();
         _sut.Add(cheff);
         Cheff newcheff = _sut.GetByID(1) with { Level = Experience.Senior };
 

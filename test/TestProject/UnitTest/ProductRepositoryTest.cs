@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Domain;
 using Infrastructure.Repositories;
+using TestProject.UnitTest.Fixtures;
 using Xunit;
 
 namespace TestProject.UnitTest;
@@ -19,7 +19,7 @@ public class ProductRepositoryTest
     public void ShouldAddAProduct()
     {
         //Given
-        Product product = new Product { ID = 1, Name = "Test", Status = 'A' };
+        Product product = ProductFixture.Build();
 
         //When
         _sut.Add(product);
@@ -32,11 +32,7 @@ public class ProductRepositoryTest
     public void ShouldAddManyProducts()
     {
         //Given
-        var products = new List<Product>(){
-            new Product { ID = 1, Name = "Test2", Status = 'A' },
-            new Product { ID = 2, Name = "Test3", Status = 'A' }
-        };
-
+        var products = ProductFixture.Build(2);
         //When
         _sut.AddMany(products);
 
@@ -48,17 +44,14 @@ public class ProductRepositoryTest
     public void ShouldGetOneProduct()
     {
         //Given
-        var products = new List<Product>(){
-            new Product { ID = 1, Name = "Test2", Status = 'A' },
-            new Product { ID = 2, Name = "Test3", Status = 'A' }
-        };
+        var products = ProductFixture.Build(2);
         _sut.AddMany(products);
 
         //When
         var product = _sut.GetByID(2);
 
         //Then
-        Assert.Equal("Test3", product?.Name);
+        Assert.Equal("2", product?.Name);
     }
 
 
@@ -66,10 +59,7 @@ public class ProductRepositoryTest
     public void ShouldDeleteOneProduct()
     {
         //Given
-        var products = new List<Product>(){
-            new Product { ID = 1, Name = "Test2", Status = 'A' },
-            new Product { ID = 2, Name = "Test3", Status = 'A' }
-        };
+        var products = ProductFixture.Build(2);
         _sut.AddMany(products);
 
         //When
@@ -79,7 +69,7 @@ public class ProductRepositoryTest
 
         //Then
         Assert.Equal(1, _sut.Count());
-        Assert.Equal("Test3", remainingProduct?.Name);
+        Assert.Equal("2", remainingProduct?.Name);
         Assert.Null(productNotFound);
     }
 
@@ -87,10 +77,7 @@ public class ProductRepositoryTest
     public void ShouldReturnSeveralProducts()
     {
         //Given
-        var products = new List<Product>(){
-            new Product { ID = 1, Name = "Test2", Status = 'A' },
-            new Product { ID = 2, Name = "Test3", Status = 'A' }
-        };
+        var products = ProductFixture.Build(2);
         _sut.AddMany(products);
 
         //When
@@ -105,7 +92,7 @@ public class ProductRepositoryTest
     public void ShouldUpdateTheProduct()
     {
         //Given
-        Product product = new Product { ID = 1, Name = "Test", Status = 'A' };
+        Product product = ProductFixture.Build();
         _sut.Add(product);
         Product newProduct = product with { Name = "Updated" };
 
